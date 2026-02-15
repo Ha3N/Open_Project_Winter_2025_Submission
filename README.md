@@ -17,7 +17,7 @@ This project implements a comprehensive pipeline for Quantum State Tomography (Q
 * **Architecture:** A Transformer-based neural network (`ShadowReconstructor`) processes sequences of random Pauli measurements (Shadows).
 * **Physical Constraints:** The model outputs a lower-triangular matrix  to construct  via Cholesky decomposition:
 $$\rho = \frac{L L^\dagger}{\text{Tr}(L L^\dagger)}$$
-This strictly enforces $\rho \succeq 0$ and $\text{Tr}(\rho) = 1$..
+This strictly enforces $\rho \succeq 0$ and $\text{Tr}(\rho) = 1$.
 * **Training:** Supervised learning on synthetic datasets generated via Qiskit Aer, optimizing a custom loss function combining real and imaginary reconstruction errors.
 
 ## Workflow
@@ -31,15 +31,17 @@ This strictly enforces $\rho \succeq 0$ and $\text{Tr}(\rho) = 1$..
 #### Mathematical Definitions
 
 We evaluate reconstruction quality using **Quantum Fidelity** ($F$) and **Trace Distance** ($T$):
-$$F(\rho, \sigma) = \left( \text{Tr} \sqrt{ \sqrt{\rho} \sigma \sqrt{\rho} } \right)^2$$$$T(\rho, \sigma) = \frac{1}{2} || \rho - \sigma ||_1 = \frac{1}{2} \text{Tr} \left[ \sqrt{(\rho - \sigma)^\dagger (\rho - \sigma)} \right]$$
+$$F(\rho, \sigma) = \left( \text{Tr} \sqrt{ \sqrt{\rho} \sigma \sqrt{\rho} } \right)^2$$ //
+$$T(\rho, \sigma) = \frac{1}{2} || \rho - \sigma ||_1 = \frac{1}{2} \text{Tr} \left[ \sqrt{(\rho - \sigma)^\dagger (\rho - \sigma)} \right]$$
+
 #### Numerical Results
 
 **Table 1: Baseline Linear Inversion (Single Qubit)**
-| State | Frobenius Error ($||\rho_{true} - \rho_{recon}||_F$) |
-| :--- | :--- |
-| $|0\rangle$ | $0.0170$ |
-| $|1\rangle$ | $0.0300$ |
-| $|+\rangle$ | $0.0146$ |
+| State | Frobenius Error ($||\rho_{true} - \rho_{recon}||_F$) | //
+| :--- | :--- | //
+| $|0\rangle$ | $0.0170$ | //
+| $|1\rangle$ | $0.0300$ | //
+| $|+\rangle$ | $0.0146$ | //
 
 **Table 2: Machine Learning Reconstruction (Classical Shadows)**
 *Training results after 10 Epochs on 1000 random states.*
